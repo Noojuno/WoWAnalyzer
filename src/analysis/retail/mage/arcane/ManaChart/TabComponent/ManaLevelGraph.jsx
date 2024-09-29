@@ -1,6 +1,5 @@
 import fetchWcl from 'common/fetchWclApi';
 import ManaLevelGraph from 'parser/ui/ManaLevelGraph';
-import ManaStyles from 'parser/ui/ManaStyles';
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
@@ -75,13 +74,11 @@ class Mana extends PureComponent {
         }));
     }
 
-    const bossData = this.state.bossHealth.series.map((series, i) => {
+    const bossData = this.state.bossHealth.series.map((series) => {
       const data = series.data.map(([timestamp, health]) => ({ x: timestamp - start, y: health }));
 
       return {
         title: `${series.name} Health`,
-        borderColor: ManaStyles[`Boss-${i}`].borderColor,
-        backgroundColor: ManaStyles[`Boss-${i}`].backgroundColor,
         data,
       };
     });
